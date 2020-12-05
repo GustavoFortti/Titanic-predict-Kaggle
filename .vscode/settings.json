@@ -1,4 +1,4 @@
 {
     "python.dataScience.jupyterServerURI": "http://localhost:8888/?token=c65aabd17a0c5a5b9beb4081a9e555e3c599b047b4a9ff2f",
-    "python.pythonPath": "/home/ds_magico/Gustavo-PC/GIT/Codes Query (marathons, exercices and studies)/DataScience/Keggle/Titanic-predict-Kaggle/venv/bin/python3.7"
+    "python.pythonPath": "/usr/bin/python3"
 }
