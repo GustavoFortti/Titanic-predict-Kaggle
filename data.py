@@ -24,7 +24,8 @@ class build_data():
         
         # Corrigindo NA
         self.df[self.df.Embarked.isna()].Embarked = int(self.df.Embarked.mean())
-        self.df.loc[self.df['Fare'].isna(), 'Fare'] = self.df.Fare.mean() 
+        self.df.loc[self.df['Fare'].isna(), 'Fare'] = self.df.Fare.mean()
+        # self.df.Fare = [ int(i) for i in self.df.Fare]
         
     def clean_ticket(self):
         Ticket = pd.DataFrame([i.split(' ') for i in self.df.Ticket])
