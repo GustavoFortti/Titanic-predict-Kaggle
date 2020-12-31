@@ -3,6 +3,7 @@ import pandas as pd
 from data import build_data
 from cabin import build_cabin
 from age import build_age
+from survived import build_survived
 
 def main():
 
@@ -43,9 +44,19 @@ def main():
     df_train_3 = age.train(df_train_2, ['PassengerId', 'Name', 'Age', 'Survived'])
     df_test_3 = age.test(df_test_2, ['PassengerId', 'Name', 'Age'])
         
-    # print(df_test_3)
-    # print(df_train_3)
+    # print(df_test_3.Embarked.describe())
+    # print(df_train_3.Embarked.describe())
     
+    ### Build predict to survived
+    
+    cols_train = ['Std', 'Min' ,'Per_25', 'Per_50', 'Pre_75', 'Max', 'PassengerId', 'Name', 'Title', 'SibSp', 'Parch', 'Survived']
+    cols_test = ['Std', 'Min' ,'Per_25', 'Per_50', 'Pre_75', 'Max', 'PassengerId', 'Name', 'Title', 'SibSp', 'Parch']
+    
+    survived = build_survived()
+    survived.train(df_train_3, cols_train)
+    print(survived.get_accuracy())
+    resp = survived.test(df_test_3, cols_test)
+    # print(resp)
     
 if __name__ == "__main__":
     main()

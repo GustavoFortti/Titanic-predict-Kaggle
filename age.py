@@ -2,22 +2,18 @@ import pandas as pd
 
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 
 class build_age():
     
     def __init__(self):
         self.clf = GradientBoostingRegressor()
-        self.accuracy = "Not found"
     
     def train(self, df, cols):
         self.modify(df, cols, True)
-        df_train = self.modify(df, cols, False)
-        return df_train
+        return self.modify(df, cols, False)
         
     def test(self, df, cols):
-        df_test = self.modify(df, cols, False)
-        return df_test
+        return self.modify(df, cols, False)
         
     def modify(self, df, cols, is_train):
         df_to_age = self.clean(df)
@@ -25,7 +21,7 @@ class build_age():
         
         df_notna = df[df.Age.notna()]
 
-        if (is_train == True):
+        if (is_train):
             self.predict(df_notna, cols, True)
         else:
             df_na = df[df.Age.isna()]
@@ -37,7 +33,7 @@ class build_age():
     def predict(self, df, cols, is_train):
         x = df.drop(columns=cols) 
 
-        if (is_train == True):
+        if (is_train):
             y = df['Age']
             y = ([int(value) for value in y])
 
@@ -48,7 +44,7 @@ class build_age():
             x_test = x
             
         y_pred = self.clf.predict(x_test)
-
+        
         return y_pred
     
     def clean(self, df):
