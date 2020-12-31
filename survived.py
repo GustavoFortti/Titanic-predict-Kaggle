@@ -17,7 +17,7 @@ class build_survived():
     def test(self, df, cols):
         resp = pd.DataFrame(self.modify(df, cols, False), index=df.PassengerId, columns=['Survived'])
         resp['Survived'] = resp['Survived'].astype('int32')
-        resp.to_csv('./data/Survived')
+        resp.to_csv('./data/Survived.csv')
         return resp
     
     def modify(self, df, cols, is_train):
